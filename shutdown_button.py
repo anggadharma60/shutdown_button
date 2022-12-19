@@ -9,27 +9,20 @@ use_button=27                       # lowest button on PiTFT+
 from gpiozero import Button
 from signal import pause
 from subprocess import check_call
-import time
-import board
-import digitalio
 import os
-import subprocess
-
-
-
 
 held_for=0.0
 
 def rls():
         global held_for
         if (held_for > 3.0):
-                oled.poweroff()
-                check_call(['/sbin/shutdown -h now'])
-        elif (held_for =< 3.0):
-                oled.poweroff()
-                check_call(['/sbin/reboot --r now'])
+           check_call(['/sbin/poweroff -h now'])
+        #    os.system("sudo shutdown -h now")
+        elif (held_for <= 3.0):
+#             check_call(['/sbin/reboot --r'])
+            os.system("sudo reboot --r")
         else:
-                held_for = 0.0
+        	held_for = 0.0
 
 def hld():
         # callback for when button is held
@@ -43,3 +36,4 @@ button.when_held = hld
 button.when_released = rls
 
 pause() # wait forever
+
