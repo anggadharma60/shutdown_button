@@ -16,11 +16,11 @@ held_for=0.0
 def rls():
         global held_for
         if (held_for > 3.0):
-           check_call(['/sbin/poweroff -h now'])
-        #    os.system("sudo shutdown -h now")
+#             check_call(['/sbin/poweroff -h now'])
+            os.system("sudo shutdown -h now")
         elif (held_for <= 3.0):
-#             check_call(['/sbin/reboot --r'])
             os.system("sudo reboot --r")
+            
         else:
         	held_for = 0.0
 
@@ -36,4 +36,5 @@ button.when_held = hld
 button.when_released = rls
 
 pause() # wait forever
+
 
