@@ -15,10 +15,10 @@ held_for=0.0
 
 def rls():
         global held_for
-        if (held_for > 3.0):
+        if (held_for > 5.0):
 #             check_call(['/sbin/poweroff -h now'])
             os.system("sudo shutdown -h now")
-        elif (held_for <= 3.0):
+        elif (held_for > 1.0):
             os.system("sudo reboot --r")
             
         else:
